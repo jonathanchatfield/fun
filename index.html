@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Typing Effect</title>
+  </head>
+  <body>
+    <h1 id="my-title"></h1>
+
+    <script>
+      const text = "8====D";
+      const h1 = document.getElementById("my-title");
+
+      function sleep(ms) {
+        return new Promise((resolve) => setTimeout(resolve, ms));
+      }
+
+      // We wrap this in an async function to allow the use of 'await'
+      async function typeText() {
+        // Note: Use < not <= to avoid "undefined" at the end
+        for (let i = 0; i < text.length; i++) {
+          // Add the current character to the H1
+          h1.innerText += text[i];
+
+          await sleep(500);
+        }
+      }
+
+      // Start the function
+      typeText();
+    </script>
+  </body>
+</html>
